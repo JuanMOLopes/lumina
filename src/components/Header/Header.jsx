@@ -13,7 +13,6 @@ function Header() {
         <div className="perfil">img</div>
         <span className="txt">texto</span>
       </div>
-
     </header>
   );
 }

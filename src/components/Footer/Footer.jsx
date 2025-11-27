@@ -1,6 +1,6 @@
 import "./Footer.css";
-import GitHub from "../../../public/GitHub.png";
-import Logo from "../../../public/logo.png"
+import GitHub from "/GitHub.png";
+import Logo from "/logo.png"
 
 function Footer() {
   return (
