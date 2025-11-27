@@ -10,8 +10,8 @@ function Header() {
       </Link>
 
       <div className="info-perfil">
-        <div className="perfil">img</div>
-        <span className="txt">texto</span>
+        <img src="../../../public/Rafael.png" alt="foto-de-Perfil" className="perfil" />
+        <span className="txt">Rafael Sorensen - Física</span>
       </div>
     </header>
   );
