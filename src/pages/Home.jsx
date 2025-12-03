@@ -11,11 +11,11 @@ function Home() {
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [serie, setSerie] = useState("2º ano");
-  const [conteudo, setConteudo] = useState("Óptica Geométrica - Princípios e Fenômenos");
-  const [tempoAula, setTempoAula] = useState("50 minutos");
-  const [nivelDificuldade, setNivelDificuldade] = useState("Intermediário");
-  const [observacoes, setObservacoes] = useState("A turma tem dificuldade com abstração matemática, focar em exemplos práticos e visuais.");
+  const [serie, setSerie] = useState("");
+  const [conteudo, setConteudo] = useState("");
+  const [tempoAula, setTempoAula] = useState("");
+  const [nivelDificuldade, setNivelDificuldade] = useState("");
+  const [observacoes, setObservacoes] = useState("");
 
   const apiKey = import.meta.env.VITE_IA_API_KEY;
 
