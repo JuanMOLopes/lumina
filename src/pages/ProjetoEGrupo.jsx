@@ -2,9 +2,9 @@ import "../App.css";
 import Header from "../components/Header/Header";
 import Nav from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
-import GrupoImg from "/foto-grupo.png";
-import TextoDireita from "../components/TextoDireita/TextoDireita";
-import TextoEsquerda from "../components/TextoEsquerda/TextoEsquerda";
+import GrupoImg from "/GrupoRetrato.png";
+import TextoDireita from "../components/TextoDir/TextoDir";
+import TextoEsquerda from "../components/TextoEsq/TextoEsq";
 
 function ProjetoEGrupo() {
   return (

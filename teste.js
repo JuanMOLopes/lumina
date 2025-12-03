@@ -38,10 +38,11 @@ async function main() {
       Com base em todas as diretrizes e nas informações fornecidas, elabore a sugestão de plano de aula.
 
       *IMPORTANTE:*
-        - Responda EXCLUSIVAMENTE em Markdown (MD)
-        - Não escreva texto fora do Markdown
+        - Responda EXCLUSIVAMENTE em HTML format.
+        - Mantenha a estrutura solicitada.
+        - Não escreva texto fora do HTML
         - Não use explicações, comentários ou introduções
-        - Use títulos (##) e listas quando apropriado
+        - Use títulos e listas quando apropriado
         - Mantenha exatamente a estrutura solicitada
         - Se possível e dentro do contexto, utilize tabelas para organizar informações
         - Se possível, utilize negrito e itálico para destacar pontos importantes
