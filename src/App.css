@@ -1,0 +1,15 @@
+.btn-pdf {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: #2666cf;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-pdf:hover {
+  background: #1d4ea8;
+}
