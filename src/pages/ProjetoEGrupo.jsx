@@ -1,5 +1,6 @@
 import "../App.css";
 import Header from "../components/Header/Header";
+import Nav from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
 import GrupoImg from "/foto-grupo.png";
 import TextoDireita from "../components/TextoDireita/TextoDireita";
