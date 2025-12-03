@@ -10,7 +10,7 @@ export default function NavBar() {
 
             <ul className="sidebar-menu">
                 <li><a href="/index.html">Home</a></li>
-                <li><a href="/projeto.html">Projeto & Grupo</a></li>
+                <li><a href="/projeto.html">Projeto & grupo</a></li>
             </ul>
         </nav>
     );
