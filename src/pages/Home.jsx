@@ -1,11 +1,27 @@
 import { useState, useEffect } from "react";
 import { GoogleGenAI } from "@google/genai";
+import html2pdf from "html2pdf.js";
 
 import "../App.css";
 
 import Header from "../components/Header/Header";
 import Nav from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
+
+function gerarPDF() {
+  const element = document.getElementById("conteudo-pdf");
+
+  const options = {
+    margin: 10,
+    filename: "plano_de_aula.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+  };
+
+  html2pdf().from(element).set(options).save();
+}
+
 
 function Home() {
   const [response, setResponse] = useState("");
@@ -124,7 +140,15 @@ function Home() {
       <div className="response-container">
         {loading && <p>Carregando...</p>}
         {error && <p style={{ color: 'red' }}>Erro: {error}</p>}
-        {response && <div dangerouslySetInnerHTML={{ __html: response }} />}
+        {response && (
+          <>
+            <div id="conteudo-pdf" dangerouslySetInnerHTML={{ __html: response }} />
+
+            <button className="btn-pdf" onClick={gerarPDF}>
+              Baixar PDF
+            </button>
+          </>
+        )}
       </div>
 
       <Footer />
