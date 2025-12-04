@@ -11,7 +11,6 @@ function ProjetoEGrupo() {
     <>
       <Header/>
      
-
       <div className="Container-projeto">
         <p>
          Nosso projeto visa desenvolver uma aplicação web completa (Full Stack) que utiliza a API

@@ -5,7 +5,7 @@ import html2pdf from "html2pdf.js";
 import "../App.css";
 
 import Header from "../components/Header/Header";
-import Nav from "../components/NavBar/NavBar";
+import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 function gerarPDF() {
@@ -21,7 +21,6 @@ function gerarPDF() {
 
   html2pdf().from(element).set(options).save();
 }
-
 
 function Home() {
   const [response, setResponse] = useState("");
@@ -105,54 +104,13 @@ function Home() {
   };
 
   return (
-    <>
-      <Header />
-      <Nav />
+    <div className="homepage">
+      <Navbar />
 
-      <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <label>
-            Série:
-            <input type="text" value={serie} onChange={(e) => setSerie(e.target.value)} />
-          </label>
-          <label>
-            Conteúdo:
-            <input type="text" value={conteudo} onChange={(e) => setConteudo(e.target.value)} />
-          </label>
-          <label>
-            Tempo de Aula:
-            <input type="text" value={tempoAula} onChange={(e) => setTempoAula(e.target.value)} />
-          </label>
-          <label>
-            Nível de Dificuldade:
-            <input type="text" value={nivelDificuldade} onChange={(e) => setNivelDificuldade(e.target.value)} />
-          </label>
-          <label>
-            Observações:
-            <textarea value={observacoes} onChange={(e) => setObservacoes(e.target.value)} />
-          </label>
-          <button type="submit" disabled={loading}>
-            {loading ? "Gerando..." : "Gerar Plano de Aula"}
-          </button>
-        </form>
+      <div className="conteudo">
+        <Header />
       </div>
-
-      <div className="response-container">
-        {loading && <p>Carregando...</p>}
-        {error && <p style={{ color: 'red' }}>Erro: {error}</p>}
-        {response && (
-          <>
-            <div id="conteudo-pdf" dangerouslySetInnerHTML={{ __html: response }} />
-
-            <button className="btn-pdf" onClick={gerarPDF}>
-              Baixar PDF
-            </button>
-          </>
-        )}
-      </div>
-
-      <Footer />
-    </>
+    </div>
   );
 }
 

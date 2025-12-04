@@ -1,0 +1,17 @@
+.btn-modo-escuro {
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  transition: color 0.3s;
+}
+
+.btn-modo-escuro :hover{
+  color: #29c1d0;
+}
+
+.modo-escuro .btn-modo-escuro {
+  color: #fff;
+}

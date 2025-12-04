@@ -1,6 +1,6 @@
 // importa o useState (estado) e useEffect (efeitos) do React
 import { useState, useEffect } from "react";
-import "./ModoEscuro.css";
+import "./BotaoTema.css";
 
 function BotaoTema() {
   // cria o estado para armazenar o modo escuro e verifica (get) o que está armazenado no localStorage
@@ -30,7 +30,15 @@ function BotaoTema() {
       onClick={() => setModoEscuro(!modoEscuro)}
     >
       {/* se o estado for true, exibe o ícone de sol, caso contrário, exibe o ícone de lua */}
-      {modoEscuro ? "☀️" : "🌑"}
+      {modoEscuro ? (
+        <i class="material-icons" title="Modo claro">
+          light_mode
+        </i>
+      ) : (
+        <i class="material-icons" title="Modo escuro">
+          dark_mode
+        </i>
+      )}
     </button>
   );
 }
