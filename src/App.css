@@ -143,3 +143,33 @@ button:disabled {
 .modo-escuro .resultado div * {
   color: #fff;
 }
+
+/* PÁGINA DE GRUPO E RESULTADOS */
+
+.Container-projeto,
+.Container-grp2 {
+text-align: center;
+  margin-top: 3rem;
+  font-size: 1.1rem;
+  line-height: 1.7rem;
+  color: #444;
+}
+
+.Grupo {
+  display: block;
+  max-width: 900px;
+  width: 30rem;
+  margin: 2rem auto;
+  border-radius: 2rem;
+
+}
+
+.secao-texto {
+  margin-top: 4rem;
+}
+
+/* Modo escuro para a página de grupo */
+.modo-escuro .Container-projeto,
+.modo-escuro .Container-grp2 {
+  color: #ccc;
+}
