@@ -1,4 +1,5 @@
 import { useState } from "react";
+// UseState: Serve para armazenar e gerenciar estado local de um componente.
 import { GoogleGenAI } from "@google/genai";
 import html2pdf from "html2pdf.js";
 

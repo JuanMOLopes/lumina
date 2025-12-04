@@ -1,5 +1,9 @@
 // importa o useState (estado) e useEffect (efeitos) do React
 import { useState, useEffect } from "react";
+//UseEffect: Serve para executar efeitos colaterais
+//useState: Serve para armazenar e gerenciar estado local de um componente.
+
+
 import "./BotaoTema.css";
 
 function BotaoTema() {
