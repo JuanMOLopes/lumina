@@ -215,7 +215,7 @@ function Home() {
                 value={nivelDificuldade}
                 
                 onChange={(e) => setNivelDificuldade(e.target.value)}
-                {/* Atualiza o estado quando o usuário seleciona outra opção */}
+                /* Atualiza o estado quando o usuário seleciona outra opção */
                 required
               >
                 <option value="">
@@ -233,7 +233,7 @@ function Home() {
             Observações (opcional):
             <textarea
               value={observacoes}
-              {/* Campo controlado: mostra o valor do estado `observacoes` */}
+              /* Campo controlado: mostra o valor do estado `observacoes` */
               onChange={(e) => setObservacoes(e.target.value)}
                
             />
