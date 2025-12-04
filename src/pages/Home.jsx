@@ -21,25 +21,38 @@ function Home() {
 
   const apiKey = import.meta.env.VITE_IA_API_KEY;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    setResponse("");
+  // Submissão do Formulário
+  const handleSubmit = async (e) => {   // 'async' permite usar 'await' dentro da função
+    e.preventDefault(); // Previne o recarregamento da página ao submeter o formulário
+    setLoading(true);    // Inicia o estado de carregamento
+    setError(null);   // Limpa erros anteriores
+    setResponse("");     // Limpa respostas anteriores para gerar uma nova
 
-    if (!apiKey) {
+
+    //Validação Chave API
+    if (!apiKey) {     //se não houver chave de API configurada
       setError("A chave da API não foi configurada.");
+      //define mensagem de erro
       setLoading(false);
+      //para o carregamento
       return;
     }
 
+    //Iniciação do cliente
     const ai = new GoogleGenAI({
       apiKey: apiKey,
+      // Passa a chave da API para autenticar
     });
 
     try {
+      // Tenta executar o bloco de código
+
       const textoGerado = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+      // Aguarda a resposta da API e armazena em 'textoGerado'
+
+      model: "gemini-2.5-flash",
+      // Usa o modelo Gemini 2.5 Flash (rápido e eficiente)
+
         contents: `
       **PERSONA E OBJETIVO:**
       Você é a "Lumina", uma assistente de IA educacional (use pronomes femininos) especializada em Física para o Ensino Médio. Seu propósito é auxiliar professores a planejar aulas de forma objetiva e estruturada, economizando tempo e oferecendo sugestões pedagógicas claras. Você não substitui o professor, mas atua como uma ferramenta de apoio para o planejamento didático.
@@ -82,24 +95,34 @@ function Home() {
       `,
       });
       setResponse(textoGerado.text);
-    } catch (err) {
+       // Armazena a resposta gerada no estado
+
+    } catch (err) {       // Se algo der errado durante a requisição
+
       setError("Ocorreu um erro ao gerar o conteúdo. Tente novamente.");
+      // Define mensagem de erro
       console.error(err);
+      // Exibe o erro completo no console (para debug)
     } finally {
       setLoading(false);
+      // Para o indicador de carregamento
     }
   };
 
+  //Gerar PDF
   function gerarPDF() {
-    const options = {
+    const options = {   // Configurações do PDF
       margin: 10,
       filename: `Plano_de_aula_${conteudo}_${serie}.pdf`,
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      // Define: unidade em milímetros, tamanho A4, orientação retrato
+
     };
 
     html2pdf().from(response).set(options).save();
+    //Inicia a conversão. Pega o HTML do estado 'response'. Aplica as configurações.Baixa o arquivo PDF no computado
   }
 
   return (
@@ -109,7 +132,7 @@ function Home() {
       <div className="conteudo">
         <Header titulo="Seja bem-vindo à lumina!" />
 
-        {!response && (
+        {!response && (   // Se NÃO há resposta, mostra:
           <p className="explicacao">
             Olá, eu sou a Lumina, sua assistente de IA educacional especializada
             em Física para o Ensino Médio. Estou aqui para ajudar você a
@@ -120,25 +143,37 @@ function Home() {
         )}
 
         {response && (
+          //Se tiver resposta:
+        
           <div className="resultado">
             <div dangerouslySetInnerHTML={{ __html: response }} />
+            {/* Renderiza o HTML gerado pela IA (CUIDADO: pode ser perigoso se vir de fonte não confiável) */}
 
             <button onClick={gerarPDF}>Baixar Plano de Aula em PDF</button>
+           {/* Botão que chama a função gerarPDF() */}
+          
           </div>
         )}
 
         {error && <p className="erro">{error}</p>}
+        {/* Se há erro, exibe a mensagem */}
+
 
         <form className="formulario" onSubmit={handleSubmit}>
+         {/* Formulário que chama handleSubmit ao submeter */}
+
           <div className="lado-a-lado">
             <label>
               Série:
               <select
                 value={serie}
+                // O valor selecionado é controlado pelo estado 'serie'
                 onChange={(e) => setSerie(e.target.value)}
+                // Ao mudar, atualiza o estado com o novo valor
                 required
               >
                 <option value="">Selecione a série</option>
+                {/* Opção padrão vazia */}
                 <option value="1º ano do Ensino Médio">
                   1º ano do Ensino Médio
                 </option>
@@ -148,6 +183,7 @@ function Home() {
                 <option value="3º ano do Ensino Médio">
                   3º ano do Ensino Médio
                 </option>
+                {/* Três opções de série */}
               </select>
             </label>
             <label>
@@ -155,7 +191,9 @@ function Home() {
               <input
                 type="text"
                 value={conteudo}
+                // Valor controlado pelo estado 'conteudo'
                 onChange={(e) => setConteudo(e.target.value)}
+                // Atualiza o estado ao digitar
                 required
               />
             </label>
@@ -166,6 +204,7 @@ function Home() {
               <input
                 type="text"
                 value={tempoAula}
+                 // Valor padrão: "50 minutos"
                 onChange={(e) => setTempoAula(e.target.value)}
                 required
               />
@@ -174,10 +213,13 @@ function Home() {
               Nível de Dificuldade:
               <select
                 value={nivelDificuldade}
+                
                 onChange={(e) => setNivelDificuldade(e.target.value)}
+                /* Atualiza o estado quando o usuário seleciona outra opção */
                 required
               >
                 <option value="">
+                   {/* Opção padrão vazia para forçar escolha explícita */}
                   Selecione o nível de dificuldade da turma
                 </option>
                 <option value="Básico">Básico</option>
@@ -187,14 +229,20 @@ function Home() {
             </label>
           </div>
           <label>
+            {/* Campo opcional de observações */}
             Observações (opcional):
             <textarea
               value={observacoes}
+              /* Campo controlado: mostra o valor do estado `observacoes` */
               onChange={(e) => setObservacoes(e.target.value)}
+               
             />
           </label>
-          <button type="submit" disabled={loading}>
-            {loading ? "Gerando plano de aula..." : "Gerar Plano de Aula"}
+          {/* Botão de submissão do formulário */}
+          <button type="submit" disabled={loading}>    
+            {/* disabled evita envios duplicados enquanto `loading` for true */}
+       {loading ? "Gerando plano de aula..." : "Gerar Plano de Aula"}
+         {/* Texto dinâmico: indica processamento ou ação disponível */}
           </button>
         </form>
       </div>
