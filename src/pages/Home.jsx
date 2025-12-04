@@ -108,7 +108,7 @@ function Home() {
       <Navbar />
 
       <div className="conteudo">
-        <Header />
+        <Header titulo="Seja bem-vindo à lumina!" />
       </div>
     </div>
   );
