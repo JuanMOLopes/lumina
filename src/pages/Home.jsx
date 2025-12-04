@@ -22,6 +22,7 @@ function Home() {
   const apiKey = import.meta.env.VITE_IA_API_KEY;
 
   // Submissão do Formulário
+  //handleSumit: função que processa o envio do formulário
   const handleSubmit = async (e) => {   // 'async' permite usar 'await' dentro da função
     e.preventDefault(); // Previne o recarregamento da página ao submeter o formulário
     setLoading(true);    // Inicia o estado de carregamento
