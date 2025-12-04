@@ -5,7 +5,7 @@ import html2pdf from "html2pdf.js";
 import "../App.css";
 
 import Header from "../components/Header/Header";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
 
 function Home() {
