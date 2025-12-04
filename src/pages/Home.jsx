@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { GoogleGenAI } from "@google/genai";
 import html2pdf from "html2pdf.js";
 
@@ -8,27 +8,13 @@ import Header from "../components/Header/Header";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
-function gerarPDF() {
-  const element = document.getElementById("conteudo-pdf");
-
-  const options = {
-    margin: 10,
-    filename: "plano_de_aula.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-  };
-
-  html2pdf().from(element).set(options).save();
-}
-
 function Home() {
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [serie, setSerie] = useState("");
   const [conteudo, setConteudo] = useState("");
-  const [tempoAula, setTempoAula] = useState("");
+  const [tempoAula, setTempoAula] = useState("50 minutos");
   const [nivelDificuldade, setNivelDificuldade] = useState("");
   const [observacoes, setObservacoes] = useState("");
 
@@ -84,7 +70,7 @@ function Home() {
       Com base em todas as diretrizes e nas informações fornecidas, elabore a sugestão de plano de aula.
 
       *IMPORTANTE:*
-        - Responda EXCLUSIVAMENTE em formato HTML.
+        - Responda EXCLUSIVAMENTE em formato HTML, com css embutido (a estilização deve ser simples, mas moderna para PDF, use classes bem específicas para evitar conflitos com minha página, não coloque nenhum background, use apenas as cores branco e preto (#fff e #000), procure ser semelhante ao markdown (assim como o notion)).
         - Mantenha a estrutura solicitada.
         - Não escreva texto fora do HTML.
         - Não use explicações, comentários ou introduções.
@@ -103,12 +89,115 @@ function Home() {
     }
   };
 
+  function gerarPDF() {
+    const options = {
+      margin: 10,
+      filename: `Plano_de_aula_${conteudo}_${serie}.pdf`,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
+
+    html2pdf().from(response).set(options).save();
+  };
+
   return (
     <div className="homepage">
       <Navbar />
 
       <div className="conteudo">
         <Header titulo="Seja bem-vindo à lumina!" />
+
+        {!response && (
+          <p className="explicacao">
+            Olá, eu sou a Lumina, sua assistente de IA educacional especializada
+            em Física para o Ensino Médio. Estou aqui para ajudar você a
+            planejar suas aulas de forma rápida e eficiente. Basta preencher o
+            formulário com as informações da sua aula, e eu criarei um plano de
+            aula estruturado para você. Vamos começar?
+          </p>
+        )}
+
+        {response && (
+          <div className="resultado">
+            <div dangerouslySetInnerHTML={{ __html: response }} />
+
+            <button onClick={gerarPDF}>Baixar Plano de Aula em PDF</button>
+          </div>
+        )}
+
+        {error && <p className="erro">{error}</p>}
+
+        <form className="formulario" onSubmit={handleSubmit}>
+          <div className="lado-a-lado">
+            <label>
+              Série:
+              <select
+                value={serie}
+                onChange={(e) => setSerie(e.target.value)}
+                required
+              >
+                <option value="">Selecione a série</option>
+                <option value="1º ano do Ensino Médio">
+                  1º ano do Ensino Médio
+                </option>
+                <option value="2º ano do Ensino Médio">
+                  2º ano do Ensino Médio
+                </option>
+                <option value="3º ano do Ensino Médio">
+                  3º ano do Ensino Médio
+                </option>
+              </select>
+            </label>
+            <label>
+              Conteúdo:
+              <input
+                type="text"
+                value={conteudo}
+                onChange={(e) => setConteudo(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="lado-a-lado">
+            <label>
+              Tempo de Aula:
+              <input
+                type="text"
+                value={tempoAula}
+                onChange={(e) => setTempoAula(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Nível de Dificuldade:
+              <select
+                value={nivelDificuldade}
+                onChange={(e) => setNivelDificuldade(e.target.value)}
+                required
+              >
+                <option value="">
+                  Selecione o nível de dificuldade da turma
+                </option>
+                <option value="Básico">Básico</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Observações (opcional):
+            <textarea
+              value={observacoes}
+              onChange={(e) => setObservacoes(e.target.value)}
+            />
+          </label>
+          <button type="submit" disabled={loading}>
+            {loading ? "Gerando plano de aula..." : "Gerar Plano de Aula"}
+          </button>
+        </form>
+
+        <Footer />
       </div>
     </div>
   );

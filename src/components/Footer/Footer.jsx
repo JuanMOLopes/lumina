@@ -8,11 +8,8 @@ function Footer() {
       <div id="contato">
         <a href="https://github.com/JuanMOLopes/lumina.git">
           <img src={GitHub} alt="GitHub" />
-          GitHub
+          https://github.com/JuanMOLopes/lumina.git
         </a>
-        <p>
-          <strong>Contato:</strong> GroupTwoDevelopers@contact.com
-        </p>
       </div>
       <div className="lado-a-lado">
         <div id="sobre">

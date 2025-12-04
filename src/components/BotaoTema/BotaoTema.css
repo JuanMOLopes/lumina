@@ -6,6 +6,7 @@
   user-select: none;
   background-color: transparent;
   transition: color 0.3s;
+  color: #000;
 }
 
 .btn-modo-escuro :hover{
