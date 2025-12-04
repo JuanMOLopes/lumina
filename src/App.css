@@ -173,3 +173,51 @@ text-align: center;
 .modo-escuro .Container-grp2 {
   color: #ccc;
 }
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .conteudo {
+    width: 100vw;
+    margin-left: 0;
+    padding: 2rem 1.5rem 8rem 1.5rem; /* Adiciona padding inferior para não sobrepor o footer/nav */
+  }
+
+  .explicacao {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  .formulario {
+    padding: 1.5rem;
+  }
+
+  .lado-a-lado {
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .formulario label {
+    font-size: 1rem;
+  }
+
+  .formulario textarea {
+    width: 100%;
+  }
+
+  .resultado {
+    padding: 1.5rem;
+  }
+
+  .Container-projeto,
+  .Container-grp2 {
+    padding: 1.5rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  .Grupo {
+    width: 100%;
+    border-radius: 1rem;
+  }
+}

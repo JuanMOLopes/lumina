@@ -39,3 +39,32 @@
 .modo-escuro .titulo, .modo-escuro .user p {
   color: #fff;
 }
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .header {
+    height: auto;
+    padding: 1rem 0;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .titulo {
+    font-size: 20px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .user {
+    margin-right: 0;
+  }
+
+  .user p {
+    display: none; /* Oculta o nome do usuário em telas pequenas */
+  }
+
+  .user .foto-perfil {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

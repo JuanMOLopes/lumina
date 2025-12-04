@@ -16,3 +16,25 @@
 .modo-escuro .btn-modo-escuro {
   color: #fff;
 }
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .btn-modo-escuro {
+    margin-top: 0;
+    position: absolute;
+    top: -45px;
+    right: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .modo-escuro .btn-modo-escuro {
+    background-color: #1d1d29;
+  }
+}

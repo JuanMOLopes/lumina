@@ -31,11 +31,11 @@ function BotaoTema() {
     >
       {/* se o estado for true, exibe o ícone de sol, caso contrário, exibe o ícone de lua */}
       {modoEscuro ? (
-        <i class="material-icons" title="Modo claro">
+        <i className="material-icons" title="Modo claro">
           light_mode
         </i>
       ) : (
-        <i class="material-icons" title="Modo escuro">
+        <i className="material-icons" title="Modo escuro">
           dark_mode
         </i>
       )}

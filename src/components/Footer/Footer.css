@@ -103,6 +103,11 @@
 
 /* Responsividade */
 @media (max-width: 768px) {
+  .footer-container {
+    width: 100vw;
+    margin-left: 0;
+  }
+
   .footer-superior {
     flex-direction: column;
     align-items: center;
