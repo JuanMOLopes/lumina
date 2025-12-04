@@ -71,7 +71,7 @@ function Home() {
       Com base em todas as diretrizes e nas informações fornecidas, elabore a sugestão de plano de aula.
 
       *IMPORTANTE:*
-        - Responda EXCLUSIVAMENTE em formato HTML, com css embutido (a estilização deve ser simples, mas moderna para PDF, use classes bem específicas para evitar conflitos com minha página, não coloque nenhum background, use apenas as cores branco e preto (#fff e #000), procure ser semelhante ao markdown (assim como o notion)).
+        - Responda EXCLUSIVAMENTE em formato HTML, com css embutido (a estilização deve ser simples, mas moderna para PDF, use classes bem específicas para evitar conflitos com minha página, o background deve obrigatoriamente ser transparent, use apenas as cores branco e preto (#fff e #000), procure ser semelhante ao markdown (assim como o notion)).
         - Mantenha a estrutura solicitada.
         - Não escreva texto fora do HTML.
         - Não use explicações, comentários ou introduções.
