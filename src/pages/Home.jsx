@@ -99,7 +99,7 @@ function Home() {
     };
 
     html2pdf().from(response).set(options).save();
-  };
+  }
 
   return (
     <div className="homepage">
@@ -196,9 +196,9 @@ function Home() {
             {loading ? "Gerando plano de aula..." : "Gerar Plano de Aula"}
           </button>
         </form>
-
-        <Footer />
       </div>
+
+      <Footer />
     </div>
   );
 }
