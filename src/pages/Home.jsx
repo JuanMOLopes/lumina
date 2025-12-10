@@ -143,23 +143,6 @@ function Home() {
           </p>
         )}
 
-        {response && (
-          //Se tiver resposta:
-        
-          <div className="resultado">
-            <div dangerouslySetInnerHTML={{ __html: response }} />
-            {/* Renderiza o HTML gerado pela IA (CUIDADO: pode ser perigoso se vir de fonte não confiável) */}
-
-            <button onClick={gerarPDF}>Baixar Plano de Aula em PDF</button>
-           {/* Botão que chama a função gerarPDF() */}
-          
-          </div>
-        )}
-
-        {error && <p className="erro">{error}</p>}
-        {/* Se há erro, exibe a mensagem */}
-
-
         <form className="formulario" onSubmit={handleSubmit}>
          {/* Formulário que chama handleSubmit ao submeter */}
 
@@ -242,10 +225,26 @@ function Home() {
           {/* Botão de submissão do formulário */}
           <button type="submit" disabled={loading}>    
             {/* disabled evita envios duplicados enquanto `loading` for true */}
-       {loading ? "Gerando plano de aula..." : "Gerar Plano de Aula"}
+       {loading ? "Gerando plano de aula... 👇" : "Gerar Plano de Aula"}
          {/* Texto dinâmico: indica processamento ou ação disponível */}
           </button>
         </form>
+        
+          {response && (
+          //Se tiver resposta:
+        
+          <div className="resultado">
+            <div dangerouslySetInnerHTML={{ __html: response }} />
+            {/* Renderiza o HTML gerado pela IA (CUIDADO: pode ser perigoso se vir de fonte não confiável) */}
+
+            <button onClick={gerarPDF}>Baixar Plano de Aula em PDF</button>
+           {/* Botão que chama a função gerarPDF() */}
+          
+          </div>
+        )}
+
+        {error && <p className="erro">{error}</p>}
+        {/* Se há erro, exibe a mensagem */}
       </div>
 
       <Footer />
