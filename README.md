@@ -1,6 +1,6 @@
 # 📘 Lumina — Assistente Inteligente para Planejamento de Aulas de Física
 
-![Status do Projeto](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Status do Projeto](https://img.shields.io/badge/status-Finalizado-green)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-educacional-blue)
 
 📌 Visão Geral
